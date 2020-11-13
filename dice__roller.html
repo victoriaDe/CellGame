@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dice</title>
+    <style>
+        body {
+
+            background: black;
+        }
+
+        .dice__wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .roll_button {
+            width: 50px;
+            text-align: center;
+            font-size: 25px;
+            color: #fff;
+            padding: 10px;
+            border: 2px solid white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+
+        @-webkit-keyframes spinDice {
+            0% {
+                transform: rotate(0deg);
+                filter: blur(5px);
+            }
+            100% {
+                transform: rotate(360deg);
+                filter: blur(5px);
+            }
+        }
+
+        @keyframes spinDice {
+            0% {
+                transform: rotate(0deg);
+                filter: blur(5px);
+            }
+            100% {
+                transform: rotate(360deg);
+                filter: blur(5px);
+            }
+        }
+
+        img {
+            width: 100px;
+            padding: 15px;
+            animation: none;
+        }
+
+    </style>
+</head>
+<body>
+<div class="dice__wrapper">
+    <img src="https://i.ibb.co/gWwgM5v/unknown.png" alt="unknown" id="dice">
+    <div class="roll_button" id="rollButton">Roll</div>
+    <audio src="https://bit.ly/dice-sound" id="diceAudio"></audio>
+</div>
+</body>
+</html>

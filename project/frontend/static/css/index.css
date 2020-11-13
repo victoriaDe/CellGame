@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    padding-top: 150px;
+    font-size: 30px;
+}
+
+.navbar {
+    position: fixed;
+    background: black;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.nav__link {
+    color: white;
+    font-family: 'Frijole', cursive;
+    font-size: 40px;
+    padding: 10px;
+    margin: 10px;
+
+    text-decoration: none;
+}
+
+.nav__link:hover {
+    color: #b60707;
+    /* animation-name: navLinksHover;
+     animation: 2s ease-in-out infinite;*/
+}
+
+.main_page p {
+    padding: 15px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.main_page_content {
+    display: flex;
+    justify-content: center;
+    padding: 80px;
+}
+
+.main_page_content img {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+}
+
+div.list {
+    border-top: 2px dashed white;
+    border-bottom: 2px dashed white;
+    box-sizing: border-box;
+}
+
+ul.rule__list {
+    list-style-type: none;
+    font-size: 28px;
+}
+
+ul.rule__list li p {
+    font-size: 40px;
+    padding: 15px;
+    margin: 10px;
+    text-align: center;
+}
+
+ul.rule__list li:first-child {
+    color: yellow;
+}
+
+.award_stands {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.award_stands div {
+    width: 150px;
+    background: goldenrod;
+    border: 1px solid darkgoldenrod;
+}
+
+.award_first_place {
+    background: yellow;
+    height: 280px;
+}
+
+.award_second_place {
+    background: blue;
+    height: 210px;
+}
+
+.award_third_place p {
+    text-align: center;
+}
+
+.award_third_place {
+    background: green;
+    height: 150px;
+}

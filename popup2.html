@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pop2</title>
+    <style>
+        /* container */
+        .container {
+            padding: 5% 5%;
+        }
+
+        /* CSS talk bubble */
+        .talk-bubble {
+            margin: 40px;
+            display: inline-block;
+            position: relative;
+            width: 200px;
+            height: auto;
+            background-color: lightyellow;
+            border: 8px solid #666;
+            border-radius: 30px;
+        }
+
+        /* Right triangle placed top right flush. */
+        .tri-right.border.right-top:before {
+            content: ' ';
+            position: absolute;
+            width: 0;
+            height: 0;
+            left: auto;
+            right: -40px;
+            top: -8px;
+            bottom: auto;
+            border: 32px solid;
+            border-color: #666 transparent transparent transparent;
+        }
+
+        .tri-right.right-top:after {
+            content: ' ';
+            position: absolute;
+            width: 0;
+            height: 0;
+            left: auto;
+            right: -20px;
+            top: 0px;
+            bottom: auto;
+            border: 20px solid;
+            border-color: lightyellow transparent transparent transparent;
+        }
+
+        /* talk bubble contents */
+        .talktext {
+            padding: 1em;
+            text-align: left;
+            line-height: 1.5em;
+        }
+    </style>
+</head>
+<body>
+<div class="talk-bubble tri-right round border right-top">
+    <div class="talktext">
+        <p>And finally on the right flush at the top. Uses .round .border and .right-top</p>
+    </div>
+</div>
+</body>
+</html>

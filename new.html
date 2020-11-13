@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            background: black;
+        }
+
+        .game__container {
+            display: grid;
+            justify-content: center;
+            grid-template-rows: repeat(4, 150px);
+            grid-template-columns: repeat(7, 150px);
+        }
+
+        .game__container div {
+            background: darkslategrey;
+            border: 2px solid black;
+        }
+
+        .game__container div.empty {
+            background: white;
+            border: none;
+        }
+
+        .game__coin {
+            width: 60px;
+            height: 60px;
+            transform: translate(45px, 45px);
+        }
+
+        .game__ice {
+            width: 100px;
+            height: 100px;
+        }
+
+        .game__fire {
+            width: 100px;
+            height: 100px;
+        }
+
+        .icon {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            z-index: 10;
+        }
+
+        .icon_nickname_container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .icon_nickname_container p {
+            padding: 5px;
+            font-size: 25px;
+            font-weight: bold;
+            background: #432057;
+            color: white;
+            text-align: center;
+        }
+
+        .icon_nickname_container div {
+            margin-left: 15px;
+        }
+
+        .dice__wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .roll_button {
+            width: 50px;
+            text-align: center;
+            font-size: 25px;
+            color: #fff;
+            padding: 10px;
+            border: 2px solid white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+
+        @-webkit-keyframes spinDice {
+            0% {
+                transform: rotate(0deg);
+                filter: blur(5px);
+            }
+            100% {
+                transform: rotate(360deg);
+                filter: blur(5px);
+            }
+        }
+
+        @keyframes spinDice {
+            0% {
+                transform: rotate(0deg);
+                filter: blur(5px);
+            }
+            100% {
+                transform: rotate(360deg);
+                filter: blur(5px);
+            }
+        }
+
+        img {
+            width: 100px;
+            padding: 15px;
+            animation: none;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="game__container" id="gameContainer">
+        <div id="square6"></div>
+        <div id="square5"></div>
+        <div id="square4"></div>
+        <div id="square3"></div>
+    <div id="square2"></div>
+    <div id="square1"></div>
+    <div id="startPoint"></div>
+
+    <div id="square7"></div>
+    <div id="square8"></div>
+    <div id="square9"></div>
+    <div id="square10"></div>
+    <div id="square11"></div>
+    <div id="square12"></div>
+    <div class="empty"></div>
+
+    <div id="square18"></div>
+    <div id="square17"></div>
+    <div id="square16"></div>
+    <div id="square15"></div>
+    <div id="square14"></div>
+    <div id="square13"></div>
+    <div class="empty"></div>
+
+    <div id="square19"></div>
+    <div id="square20"></div>
+    <div id="square21"></div>
+    <div id="square22"></div>
+    <div id="square23"></div>
+    <div id="square24"></div>
+    <div id="endPoint" class="end_point"></div>
+</div>
+<div class="icon_nickname_container" id="iconContainer">
+    <div>
+        <p>Lizard</p>
+        <img src="https://i.ibb.co/HxX3600/lizard.png" id="lizard" alt='lizard' draggable="true" class="icon">
+    </div>
+
+    <div class="dice__wrapper">
+        <img src="https://i.ibb.co/gWwgM5v/unknown.png" alt="unknown" id="dice">
+        <div class="roll_button" id="rollButton">Roll</div>
+        <audio src="https://bit.ly/dice-sound" id="diceAudio"></audio>
+    </div>
+</div>
+
+</div>
+</body>
+</html>
