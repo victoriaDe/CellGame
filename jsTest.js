@@ -53,3 +53,7 @@ function questionPopupClose() {
     questionContainer.classList.remove('openQuestion__popup__container');
     questionContent.classList.remove('openQuestion__popup__content');
 }
+
+
+
+//----
