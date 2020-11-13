@@ -2,31 +2,26 @@ let lizard = {
     id: 'lizard',
     isWinner: false,
     isPlayerFrozen: false,
-    lives: 4,
     imgSrc: 'lizard.png',
     turn: true,
     name: '',
     element: document.getElementById('lizard'),
-    userdata: 'player1Div',
     scoreElement: document.querySelector('#player1Div span'),
     borderElement: document.querySelector('#player1Div p'),
-    score: 0,
+    userdata: 'player1Div'
 };
 
 let chicken = {
     id: 'chicken',
     isWinner: false,
     isPlayerFrozen: false,
-    lives: 4,
     imgSrc: 'lizard.png',
     turn: true,
     name: '',
     element: document.getElementById('chicken'),
     scoreElement: document.querySelector('#player2Div span'),
     borderElement: document.querySelector('#player2Div p'),
-    userdata: 'player2Div',
-    score: 0,
-
+    userdata: 'player2Div'
 };
 
 let maxCellNumber = 25;
@@ -47,10 +42,6 @@ let icePopupContent = '';
 let icePopupClose = '';
 let iceWaitingPopup = '';
 const startBtn = document.getElementById('startBtn');
-let questionContainer = document.getElementById('question__popup__container');
-let questionContent = document.getElementById('question__popup__content');
-let questionBtn;
-let questionInput;
 
 startBtn.addEventListener('click', startGame);
 
@@ -143,8 +134,7 @@ function passMove(player) {
 
 
 function actionMoney(player) {
-    player.score += 10;
-    player.scoreElement.textContent = player.score;
+    player.scoreElement.textContent = player.scoreElement.textContent * 1 + 10;
     actionsAttributes.coinAudio.play();
     passMove(player);
 }
@@ -190,48 +180,57 @@ function closeIceWaitingPopup() {
 
 function actionQuestion(player) {
     questionPopupOpen(player);
-    passMove(player);
 }
 
 function questionPopupOpen(player) {
-    questionBtn = document.getElementById('question__btn__Check');
-    questionInput = document.getElementById('answer_input');
-    questionInput.addEventListener('input', () => checkAnswer(player), {once: true});
-
-    setRandomQuestion();
-
     questionContainer.classList.remove('closedQuestion__popup__container');
     questionContent.classList.remove('closedQuestion__popup__content');
     questionContainer.classList.add('openQuestion__popup__container');
     questionContent.classList.add('openQuestion__popup__content');
+    document.getElementById('question_card').classList.remove('question_card_invisible');
+
+    setRandomQuestion();
+    questionInput.addEventListener('input', () => checkAnswer(player), {once: true});
 }
 
 
 function checkAnswer(player) {
     if (questionInput.value.length === 0) {
-        questionBtn.removeEventListener('click', () => onSubmit(player), {once: true});
+        questionBtn.removeEventListener('click', () => onSubmit(player));
     } else {
         questionBtn.addEventListener('click', () => onSubmit(player), {once: true});
     }
 }
 
-function onSubmit(player) {
-    if (answerInput.value === correctAnswer) {
-        questionContent.innerHTML += '<h2>Correct! +50 coins!</h2>';
-        player.score += 50;
-    } else {
-        questionContent.innerHTML += '<h2>Oops...The correct answer is:<br>' + correctAnswer + '<br>-10 coins!</h2>';
-        player.score -= 10;
-    }
-    setTimeout(questionPopupClose, 4000);
+let cardResult = document.getElementById('question__result');
 
+function onSubmit(player) {
+    document.getElementById('question_card').classList.add('question_card_invisible');
+
+    if (isCorrect(answerInput.value)) {
+        cardResult.innerHTML = '<h2>Correct! +50 coins!</h2>';
+        player.scoreElement.textContent = player.scoreElement.textContent * 1 + 50;
+
+    } else {
+        cardResult.innerHTML = '<h2>Oops...The correct answer is:<br>' + shownAnswers + '<br>-10 coins!</h2>';
+        player.scoreElement.textContent = player.scoreElement.textContent - 10;
+
+    }
+    closeQuestionPopup(player);
 }
 
-function questionPopupClose() {
+function closeQuestionPopup(player) {
+    setTimeout(() => questionPopupClose(player), 4000);
+}
+
+function questionPopupClose(player) {
     questionContainer.classList.add('closedQuestion__popup__container');
     questionContent.classList.add('closedQuestion__popup__content');
     questionContainer.classList.remove('openQuestion__popup__container');
     questionContent.classList.remove('openQuestion__popup__content');
+    cardResult.innerHTML = '';
+    questionInput.value = '';
+    passMove(player);
 }
 
 function waitForEnter(event) {

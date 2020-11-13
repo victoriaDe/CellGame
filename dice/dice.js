@@ -26,7 +26,3 @@ function rollDice() {
 function stopDiceAnimation() {
     diceImage.style.animation = "none";
 }
-
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}

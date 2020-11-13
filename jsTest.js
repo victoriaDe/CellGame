@@ -1,12 +1,9 @@
+/*
 let questionContainer = document.getElementById('question__popup__container');
 let questionContent = document.getElementById('question__popup__content');
 let questionBtn;
 let questionInput;
 let btn = document.getElementById('siskiIDrakony');
-let player = {
-    name: 'jopa',
-    score: 100
-}
 btn.addEventListener('click', () => questionPopupOpen(player));
 
 
@@ -34,18 +31,21 @@ function checkAnswer(player) {
 
 function onSubmit(player) {
     console.log(player.name);
-    if (answerInput.value === correctAnswer) {
-        questionContent.innerHTML += '<h2>Correct! +50 coins!</h2>';
+    if (answerInput.value.trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
+        questionContent.innerHTML = '<h2>Correct! +50 coins!</h2>';
         player.element
             .score += 50;
     } else {
-        questionContent.innerHTML += '<h2>Oops...The correct answer is:<br>' + correctAnswer + '<br>-10 coins!</h2>';
+        questionContent.innerHTML = '<h2>Oops...The correct answer is:<br>' + correctAnswer + '<br>-10 coins!</h2>';
         player.element.score -= 10;
     }
-    console.log(player.score);
-    setTimeout(questionPopupClose, 4000);
+    closeQuestionPopup();
 }
 
+function closeQuestionPopup() {
+    setTimeout(questionPopupClose, 4000);
+
+}
 
 function questionPopupClose() {
     questionContainer.classList.add('closedQuestion__popup__container');
@@ -55,5 +55,4 @@ function questionPopupClose() {
 }
 
 
-
-//----
+//----*/

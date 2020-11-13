@@ -2,7 +2,6 @@ const questions = {
     1: {
         question: " каком году утонул Титаник?",
         answers: "1912",
-        regex: '/[0-9]/gm',
     },
     2: {
         question: 'Крупнейшая технологическая компания в Южной Корее?',
@@ -47,7 +46,6 @@ const questions = {
     12: {
         question: ' Конец Первой мировой войны',
         answers: '1918',
-        regex: '/[0-9]/gm'
     },
     13: {
         question: 'Конец Второй мировой войны?',
@@ -128,7 +126,6 @@ const questions = {
     32: {
         question: 'В каком году произошла Чернобыльская катастрофа? ',
         answers: '1986',
-        regex: '/[0-9]/gm',
     },
     33: {
         question: 'Какой цветок до сих пор считают символом Японии и самого Солнца?',
@@ -163,11 +160,11 @@ const questions = {
     },
     41: {
         question: 'Туристы, приезжающие на Майорку, обязаны заплатить налог на...',
-        answers: 'Огниво'
+        answers: ['На солнце', 'солнце']
     },
     42: {
         question: 'Какой волшебный предмет был у солдата из сказки Г. Х. Андерсена?',
-        answers: ['на солнце', 'солнце'],
+        answers: 'Огниво'
     },
     43: {
         question: 'Верблюды накапливают в горбах воду?',
@@ -183,7 +180,7 @@ const questions = {
     },
     46: {
         question: 'Прага – столица Чехии. Братислава – столица Словакии. Какой город был столицей Чехословакии?',
-        answers: 'Прага',
+        answers: 'Прага'
     },
     47: {
         question: 'Самая северная столица Европы?',
@@ -203,48 +200,39 @@ const questions = {
     }
 };
 
-
-
-let questionH2 = document.getElementById('question');
+let questionContainer = document.getElementById('question__popup__container');
+let questionContent = document.getElementById('question__popup__content');
+let questionBtn = document.getElementById('question__btn__Check');
+let questionInput = document.getElementById('answer_input');
+let questionElement = document.getElementById('question');
 let answerInput = document.getElementById('answer_input');
-let userQuestion, correctAnswer;
+let question, shownAnswers, answers;
 
-function setRandomQuestion(){
-    let questionNumber = getRandomInt(1, 50);
-     userQuestion = questions[questionNumber].question.trim().toLowerCase();
-     correctAnswer = questions[questionNumber].answers.trim().toLowerCase();
-    questionH2.textContent = userQuestion.trim().toLowerCase();
+function setRandomQuestion() {
+    let questionNumber = getRandomInt(0, 50);
+    question = questions[questionNumber].question;
+    let answersString = questions[questionNumber].answers.toString();
+    shownAnswers = answersString.substring(0, answersString.indexOf(","));
+    answers = questions[questionNumber].answers;
+    questionElement.textContent = question;
 }
 
-
-
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-
-
-
-
-
-// 1: {question:
-//     answer:}
-
-/*checkIfAnswerCorrect();
-
-function checkIfAnswerCorrect(questionNumber, actualAnswer) {
+function isCorrect(input) {
     let result = false;
-    let question = questions[questionNumber];
-    let formattedAnswer = actualAnswer.trim().toUpperCase();
-    if (question.answer) {
-        result = question.answer.toUpperCase() === formattedAnswer;
+    if (typeof answers === "string") {
+        result = isEqualIgnoreCase(input, answers);
     } else {
-        for (let index in question.answers) {
-            if (question.answers[index].toUpperCase() === formattedAnswer) {
+        for (let i = 0; i < answers.length; i++) {
+            console.log(answers)
+            if (isEqualIgnoreCase(input, answers[i])) {
                 result = true;
-                break;
             }
         }
     }
     return result;
-}*/
+}
+
+function isEqualIgnoreCase(string1, string2) {
+    return string1.trim().toUpperCase() === string2.trim().toUpperCase();
+}
+

@@ -317,6 +317,7 @@
             visibility: visible;
             transform: translate(0, 0);
         }
+
         .question__popup__container {
             position: fixed;
             top: 0;
@@ -408,8 +409,9 @@
             border-radius: 20px;
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            margin: 20px auto;
             background: rgba(67, 32, 87, 0.6);
+            width: 20%;
         }
 
         .question__btn__ok p {
@@ -425,6 +427,9 @@
         .question__btn__ok:hover {
             color: white;
             background: rgba(67, 32, 87, 1);
+        }
+        .question_card_invisible{
+            display: none;
         }
 
 
@@ -508,9 +513,12 @@
 <div class="question__popup__container closedQuestion__popup__container" id="question__popup__container">
     <div class="question__popup__body">
         <div class="question__popup__content closedQuestion__popup__content" id="question__popup__content">
-            <h2 id="question"></h2>
-            <input type="text" placeholder="Your answer" id="answer_input">
-            <div class="question__btn__ok" id="question__btn__Check"><p>Check</p></div>
+            <div id="question_card">
+                <h2 id="question"></h2>
+                <input type="text" placeholder="Your answer" id="answer_input">
+                <div class="question__btn__ok" id="question__btn__Check"><p>Check</p></div>
+            </div>
+            <div class="question__result" id="question__result"></div>
         </div>
     </div>
 </div>
@@ -518,5 +526,6 @@
 <script defer src="game__2.js"></script>
 <script src="dice/dice.js"></script>
 <script src="QA.js"></script>
+<script src="random.js"></script>
 </body>
 </html>
