@@ -43,7 +43,7 @@ let icePopupClose = '';
 let iceWaitingPopup = '';
 const startBtn = document.getElementById('startBtn');
 
-startBtn.addEventListener('click', startGame);
+
 
 function startGame() {
     startBtn.classList.add('disabledStartBtn');

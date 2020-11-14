@@ -4,23 +4,603 @@
     <meta charset="UTF-8">
     <title>slider</title>
     <style>
-        .class1 {
-            background-image: url("lizard.png");
+        body {
+            margin: 0;
+            background: black;
+            color: white;
         }
-        .class2 {
-            background-image: url("chicken.png");
+
+        .playersChoosingAreaWrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 30px;
         }
-        .class3 {
-            background-image: url("bat.png");
+
+        .playersChoosingAreaInput {
+            height: 40px;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .playersChoosingAreaImg {
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .deleteImg {
+            position: absolute;
+            right: 30px;
+            top: 15px;
+            background: red;
+            padding: 5px;
+            cursor: pointer;
+            border-radius: 10%;
+        }
+
+        .deleteImg:hover {
+            padding: 10px;
+            font-size: 30px;
+        }
+
+        .playersChoosingAreaImg img {
+            height: 150px;
+            padding: 5px;
+        }
+
+        .iconsWrapper {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            cursor: pointer;
+            padding-right: 70px;
+            flex-wrap: wrap;
+        }
+
+        .dropdown {
+            position: relative;
+
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            padding-top: 10px;
+            background: black;
+        }
+
+        .check_mark {
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 0;
+            font-size: 25px;
+            font-weight: bold;
+            color: greenyellow;
+            cursor: pointer;
+        }
+
+        .check_mark:hover {
+            background: rgba(173, 255, 47, 0.3);
+        }
+
+        .player-icon-small {
+            height: 100px;
+            object-fit: contain;
+        }
+
+        .player-icon-big {
+            width: 200px;
+            height: 200px;
+        }
+
+        .playersChoosingAreaBtn {
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 25px;
+            border-radius: 20px;
+            border: none;
+            margin-left: 30px;
+        }
+
+        .playersChoosingAreaBtn {
+            cursor: not-allowed;
+            outline: none;
+            background: rgba(255, 140, 0, 0.4);
+        }
+
+        .playersChoosingAreaBtn.open {
+            background: darkorange;
+        }
+
+        .playersChoosingAreaBtn.open:hover,
+        .playersChoosingAreaBtn.open:focus,
+        .playersChoosingAreaBtn.open:active {
+            cursor: pointer;
+            outline: none;
+        }
+
+        .displayNone {
+            display: none;
+        }
+
+        .addRemoveBtn {
+            width: 40px;
+            padding: 5px;
+            font-size: 25px;
+            margin: 30px;
         }
 
     </style>
 </head>
 <body>
-<select>
-    <option value="1" class="class1">lizard</option>
-    <option value="1" class="class2">chicken</option>
-    <option value="1" class="class3">bat</option>
-</select>
+<div class="playersChoosingAreaWrapper">
+    <div id="playersChoosingArea" class="playersChoosingArea" oninput="setSubmitButtonState(this)">
+        <div class="playersChoosingDiv" id="firstPlayer">
+            <input type="text" placeholder="Nickname" class="playersChoosingAreaInput">
+            <div class="playersChoosingAreaImg">
+            </div>
+        </div>
+        <div class="playersChoosingDiv" id="secondPlayer">
+            <input type="text" placeholder="Nickname" class="playersChoosingAreaInput">
+            <div class="playersChoosingAreaImg">
+            </div>
+        </div>
+        <div class="playersChoosingDiv displayNone" id="thirdPlayer">
+            <input type="text" placeholder="Nickname" class="playersChoosingAreaInput">
+            <div class="playersChoosingAreaImg">
+            </div>
+        </div>
+        <div class="playersChoosingDiv displayNone" id="fourthPlayer">
+            <input type="text" placeholder="Nickname" class="playersChoosingAreaInput">
+            <div class="playersChoosingAreaImg">
+            </div>
+        </div>
+    </div>
+    <div class="iconsWrapper">
+        <div class="dropdown">
+            <img src="images/sheep.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/sheep.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/owl.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/owl.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/shark.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/shark.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/swan.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/swan.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/rat.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/rat.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/turtle.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/turtle.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/bat.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/bat.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/bear.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/bear.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/bee.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/bee.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/bull.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/bull.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/cat.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/cat.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/cow.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/cow.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/crab.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/crab.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/crocodile.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/crocodile.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/deer.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/deer.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/dolphin.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/dolphin.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/duck.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/duck.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/eagle.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/eagle.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+        <div class="dropdown">
+            <img src="images/elephant.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/elephant.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/fish.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/fish.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/giraffe.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/giraffe.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/goat.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/goat.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/hippo.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/hippo.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/horse.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/horse.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+        <div class="dropdown">
+            <img src="images/kangaroo.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/kangaroo.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/koala.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/koala.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/lizard.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/lizard.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/lobster.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/lobster.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/monkey.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/monkey.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/mouse.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/mouse.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/octopus.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/octopus.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/penguin.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/penguin.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/pig.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/pig.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/rabbit.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/rabbit.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/raccoon.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/raccoon.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/snail.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/snail.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/squirrel.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/squirrel.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/tiger.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/tiger.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/wolf.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/wolf.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <img src="images/chicken.png" class='player-icon-small' alt="player-icon">
+            <div class="dropdown-content">
+                <img src="images/chicken.png" class="player-icon-big" alt="icon">
+                <p class="check_mark">&#x2714;</p>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="addPlayerButton addRemoveBtn" id="addPlayerButton" onclick="addPlayer()">+</button>
+<button class="removePlayerButton addRemoveBtn" id="removePlayerButton" onclick="removePlayer()">-</button>
+</div>
+<div>
+    <button class="playersChoosingAreaBtn" id="playersChoosingAreaBtn">Ready!</button>
+</div>
+
+
+<script>
+    let activePlayersCount = 2;
+    let imgs = document.querySelectorAll('img');
+    for (let i = 0; i < imgs.length; i++) {
+        imgs[i].setAttribute('draggable', 'false');
+    }
+
+    let playersChoosingArea = document.getElementById('playersChoosingArea');
+    let playersChoosingAreaBtn = document.getElementById('playersChoosingAreaBtn');
+    //TODO uncomment when ready
+    // playersChoosingAreaBtn.addEventListener('click', function () {
+    //   startBtn.addEventListener('click', startGame);
+    //})
+    let checkMarks = document.getElementsByClassName('check_mark');
+    for (let i = 0; i < checkMarks.length; i++) {
+        checkMarks[i].addEventListener('click', () => choosePlayerIcon(checkMarks[i]));
+    }
+
+    let addPlayerButton = document.getElementById("addPlayerButton");
+    let removePlayerButton = document.getElementById("removePlayerButton");
+
+    function choosePlayerIcon(pElement) {
+        let firstActivePlayerWithoutImage = getFirstActivePlayerWithoutImage(); //if there is active player without set image than add selected image to him
+        if (firstActivePlayerWithoutImage != null) {
+            let playerImageDiv = firstActivePlayerWithoutImage.children[1];
+
+            let parentDiv = pElement.closest('div');
+            let chosenImg = parentDiv.firstElementChild;
+            let imgRoot = chosenImg.getAttribute('src');
+            let newImg = document.createElement('img');
+            newImg.setAttribute('src', imgRoot);
+            newImg.setAttribute('draggable', 'false');
+            newImg.classList.add('playersChoosingAreaImg');
+            playerImageDiv.appendChild(newImg);
+
+
+            let deleteImageCross = document.createElement('div');
+            deleteImageCross.classList.add("deleteImg");
+            deleteImageCross.textContent = "X";
+            playerImageDiv.appendChild(deleteImageCross);
+            deleteImageCross.addEventListener('click', () => deletePlayerIcon(deleteImageCross))
+
+            setSubmitButtonState(playersChoosingArea);
+        }
+    }
+
+    function getFirstActivePlayerWithoutImage() {
+        let result = null;
+        let playerDivs = playersChoosingArea.children;
+        for (let i = 0; i < playerDivs.length; i++) {
+            let playerDiv = playerDivs[i];
+            if (getComputedStyle(playerDiv).display === "block" && !playerDiv.children[1].innerHTML.includes("img")) {
+                //if player div displayed and has no image - return him
+                return playerDiv;
+            }
+        }
+        return result;
+    }
+
+    function setSubmitButtonState(container) {
+        let result = true;
+        let playerDivs = container.children;
+        for (let i = 0; i < playerDivs.length; i++) {
+            let playerDiv = playerDivs[i];
+            if (getComputedStyle(playerDiv).display === "block" && (playerDiv.children[0].value.length === 0 || !playerDiv.children[1].innerHTML.includes("img"))) {
+                //if div displayed and its input is empty or no image was set - disable button
+                result = false;
+            }
+        }
+        result === true ? playersChoosingAreaBtn.classList.add("open") : playersChoosingAreaBtn.classList.remove("open");
+    }
+
+    function addPlayer() {
+        if (activePlayersCount < 4) {
+            playersChoosingArea.children[activePlayersCount].classList.remove("displayNone");
+            activePlayersCount++;
+            removePlayerButton.classList.add("enabledRemovePlayerButton");
+            setSubmitButtonState(playersChoosingArea);
+        }
+        if (activePlayersCount === 4) {
+            addPlayerButton.classList.add("disabledAddPlayerButton");
+        }
+    }
+
+    function removePlayer() {
+        if (activePlayersCount > 2) {
+            let playerToBeRemoved = playersChoosingArea.children[activePlayersCount - 1];
+            playerToBeRemoved.children[0].value = '';
+            playerToBeRemoved.children[1].innerHTML = '';
+            playerToBeRemoved.classList.add("displayNone");
+            activePlayersCount--;
+            addPlayerButton.classList.add("enabledAddPlayerButton");
+            setSubmitButtonState(playersChoosingArea);
+        }
+        if (activePlayersCount === 2) {
+            removePlayerButton.classList.add("disabledRemovePlayerButton");
+        }
+    }
+
+    function deletePlayerIcon(cross) {
+        console.log(1);
+        let parent = cross.parentElement;
+        parent.innerHTML = '';
+    }
+</script>
 </body>
 </html>
