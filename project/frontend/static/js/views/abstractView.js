@@ -11,5 +11,8 @@ export default class {
         return '';
     }
 
+    init() {
+
+    };
 }
 
