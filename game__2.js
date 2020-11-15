@@ -1,4 +1,4 @@
-let lizard = {
+/*let lizard = {
     id: 'lizard',
     isWinner: false,
     isPlayerFrozen: false,
@@ -22,7 +22,7 @@ let chicken = {
     scoreElement: document.querySelector('#player2Div span'),
     borderElement: document.querySelector('#player2Div p'),
     userdata: 'player2Div'
-};
+};*/
 
 let maxCellNumber = 25;
 let noWinner = true;
@@ -48,11 +48,11 @@ const startBtn = document.getElementById('startBtn');
 function startGame() {
     startBtn.classList.add('disabledStartBtn');
     startBtn.removeEventListener('click', startGame);
-    init();
+    initElements();
     makeMove(players[turn]);
 }
 
-function init() {
+function initElements() {
     document.getElementById('square0').appendChild(lizard.element);
     document.getElementById('square0').appendChild(chicken.element);
     icePopup = document.getElementById('ice__popup__container');           // popupIce

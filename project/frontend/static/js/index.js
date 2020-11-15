@@ -2,6 +2,7 @@ import dashboard from "./views/dashboard.js";
 import newGame from "./views/newGame.js";
 import records from "./views/records.js";
 import rules from "./views/rules.js";
+import startGame from "./views/startGame.js";
 
 const navigateTo = url => {
     history.pushState(null, null, url);
@@ -15,6 +16,7 @@ const router = async () => {
         {path: '/newGame', view: newGame},
         {path: '/records', view: records},
         {path: '/rules', view: rules},
+        {path: '/startGame', view: startGame},
     ];
 
     //tests each route for potential match

@@ -1,3 +1,4 @@
+/*
 const rollButton = document.getElementById('rollButton');
 const diceFaces = [
     'https://i.ibb.co/CWbx90w/one.png',
@@ -25,4 +26,4 @@ function rollDice() {
 
 function stopDiceAnimation() {
     diceImage.style.animation = "none";
-}
+}*/

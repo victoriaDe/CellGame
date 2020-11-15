@@ -1,9 +1,11 @@
 import abstractView from "./abstractView.js";
+import {Constants} from "./constants.js";
+import {Player} from "./player.js";
 
 export default class extends abstractView {
     constructor() {
         super();
-        this.setTitle('Settings');
+        this.setTitle('NewGame');
     }
 
     async getHtml() {
@@ -30,335 +32,28 @@ export default class extends abstractView {
             '            </div>\n' +
             '        </div>\n' +
             '    </div>\n' +
-            '    <div class="iconsWrapper">\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/sheep.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/sheep.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/owl.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/owl.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/shark.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/shark.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/swan.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/swan.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/rat.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/rat.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/turtle.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/turtle.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/bat.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/bat.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/bear.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/bear.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/bee.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/bee.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/bull.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/bull.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/cat.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/cat.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/cow.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/cow.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/crab.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/crab.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/crocodile.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/crocodile.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/deer.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/deer.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/dolphin.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/dolphin.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/duck.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/duck.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/eagle.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/eagle.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/elephant.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/elephant.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/fish.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/fish.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/giraffe.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/giraffe.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/goat.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/goat.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/hippo.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/hippo.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/horse.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/horse.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/kangaroo.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/kangaroo.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/koala.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/koala.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/lizard.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/lizard.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/lobster.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/lobster.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/monkey.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/monkey.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/mouse.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/mouse.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/octopus.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/octopus.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/penguin.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/penguin.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/pig.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/pig.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/rabbit.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/rabbit.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/raccoon.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/raccoon.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/snail.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/snail.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/squirrel.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/squirrel.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/tiger.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/tiger.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/wolf.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/wolf.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '\n' +
-            '        <div class="dropdown">\n' +
-            '            <img src="images/chicken.png" class=\'player-icon-small\' alt="player-icon">\n' +
-            '            <div class="dropdown-content">\n' +
-            '                <img src="images/chicken.png" class="player-icon-big" alt="icon">\n' +
-            '                <p class="check_mark">&#x2714;</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '    </div>\n' +
+            '    <div id="iconsWrapper" class="iconsWrapper"></div>\n' +
             '</div>\n' +
             '<button class="addPlayerButton addRemoveBtn" id="addPlayerButton">+</button>\n' +
             '<button class="removePlayerButton addRemoveBtn" id="removePlayerButton">-</button>\n' +
             '</div>\n' +
             '<div>\n' +
-            '    <button class="playersChoosingAreaBtn" id="playersChoosingAreaBtn">Ready!</button>\n' +
+            '    <button class="playersChoosingAreaBtn" id="playersChoosingAreaBtn"><a id="playersChoosingAreaLink" href="/startGame">Ready!</a></button>\n' +
             '</div>';
     }
 
     init() {
+        let iconsWrapper = document.getElementById("iconsWrapper");
+        for (let i = 0; i < Constants.images.length; i++) {
+            iconsWrapper.innerHTML += '<div class="dropdown">\n' +
+                '            <img src="' + Constants.images[i] + '" class=\'player-icon-small\' alt="player-icon">\n' +
+                '            <div class="dropdown-content">\n' +
+                '                <img src="' + Constants.images[i] + '" class="player-icon-big" alt="icon">\n' +
+                '                <p class="check_mark">&#x2714;</p>\n' +
+                '            </div>\n' +
+                '        </div>\n';
+        }
+
         let activePlayersCount = 2;
         let imgs = document.querySelectorAll('img');
         for (let i = 0; i < imgs.length; i++) {
@@ -368,10 +63,7 @@ export default class extends abstractView {
         let playersChoosingArea = document.getElementById('playersChoosingArea');
         playersChoosingArea.addEventListener('input', setSubmitButtonState);
         let playersChoosingAreaBtn = document.getElementById('playersChoosingAreaBtn');
-//TODO uncomment when ready
-// playersChoosingAreaBtn.addEventListener('click', function () {
-//   startBtn.addEventListener('click', startGame);
-//})
+
         let checkMarks = document.getElementsByClassName('check_mark');
         for (let i = 0; i < checkMarks.length; i++) {
             checkMarks[i].addEventListener('click', () => choosePlayerIcon(checkMarks[i]));
@@ -431,7 +123,26 @@ export default class extends abstractView {
                     result = false;
                 }
             }
-            result === true ? playersChoosingAreaBtn.classList.add("open") : playersChoosingAreaBtn.classList.remove("open");
+
+            if (result === true) {
+                playersChoosingAreaBtn.classList.add("open");
+                playersChoosingAreaBtn.innerHTML = "<a id=\"playersChoosingAreaLink\" data-link href=\"/startGame\">Ready!</a>";
+                Constants.players = buildPlayers(playerDivs);
+            } else {
+                playersChoosingAreaBtn.classList.remove("open");
+                playersChoosingAreaBtn.innerHTML = "Not ready!";
+            }
+        }
+
+        function buildPlayers(playerDivs) {
+            let players = [];
+            for (let i = 0; i < playerDivs.length; i++) {
+                let playerDiv = playerDivs[i];
+                if (getComputedStyle(playerDiv).display === "block") {
+                    players.push(new Player(playerDiv.children[0].value, playerDiv.children[1].children[0].getAttribute("src")))
+                }
+            }
+            return players;
         }
 
         function addPlayer() {
@@ -464,7 +175,9 @@ export default class extends abstractView {
         function deletePlayerIcon(cross) {
             let parent = cross.parentElement;
             parent.innerHTML = '';
+            setSubmitButtonState();
         }
+
     }
 
 }
