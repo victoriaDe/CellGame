@@ -3,6 +3,7 @@ import newGame from "./views/newGame.js";
 import records from "./views/records.js";
 import rules from "./views/rules.js";
 import startGame from "./views/startGame.js";
+import {ScoreboardPlayer} from "./scoreboardPlayer.js";
 
 const navigateTo = url => {
     history.pushState(null, null, url);
@@ -37,6 +38,16 @@ const router = async () => {
     const view = new match.route.view();
     document.getElementById("#app").innerHTML = await view.getHtml();
     view.init();
+
+
+    let stored = localStorage.getItem("scoreboardPlayers");
+    if (stored === null) {
+        let initialScoreboardPlayers = [];
+        initialScoreboardPlayers.push(new ScoreboardPlayer("Croco", 'https://i.ibb.co/vVq8kb8/crocodile.png', 50));
+        initialScoreboardPlayers.push(new ScoreboardPlayer("Bear", 'https://i.ibb.co/j6Kzw49/bear.png', 20));
+        initialScoreboardPlayers.push(new ScoreboardPlayer("Giraffe", 'https://i.ibb.co/xHhtfPy/giraffe.png', 70));
+        localStorage.setItem("scoreboardPlayers", JSON.stringify(initialScoreboardPlayers));
+    }
 };
 
 window.addEventListener('popstate', router);

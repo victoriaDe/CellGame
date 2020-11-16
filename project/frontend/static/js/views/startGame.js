@@ -223,6 +223,7 @@ export default class extends abstractView {
                 player.isWinner = true;
                 noWinner = false;
                 nextCellNumber = maxCellNumber;
+
             }
             let nextCellId = currentCellId.substr(0, 6) + nextCellNumber;
             let nextCell = document.getElementById(nextCellId);
@@ -431,7 +432,7 @@ export default class extends abstractView {
                 winPopup__userImage.removeChild(winImg);
                 winPopup.classList.add('closed__WinPopup__container');
                 winPopup.classList.remove('openWinPopup');
-                btnBackToMain.setAttribute('href', '"/"');
+                btnBackToMain.setAttribute('href', '/');
 
             });
         }

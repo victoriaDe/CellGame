@@ -26,7 +26,6 @@ export default class extends abstractView {
 
         let awardList = document.getElementById("award_list");
 
-        console.log(localStorage.getItem("scoreboardPlayers"));
         let scoreboardPlayers = JSON.parse(localStorage.getItem("scoreboardPlayers"));
         if (scoreboardPlayers == null) {
             return;

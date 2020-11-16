@@ -241,7 +241,7 @@ img {
     border: 8px solid #9bf1dc;
     border-radius: 30px;
     transition: all 0.7s ease 0s;
-    transform: translate(0, -100%);
+    transform: translate(-100, -100%);
     opacity: 0;
     visibility: hidden;
 }
@@ -294,14 +294,14 @@ img {
     opacity: 1;
     margin: -50px;
     visibility: hidden;
-    transform: translate(-100%, -100%);
+    transform: translate(0%, -200%);
 }
 
 .iceWaiting__popup__container.opened {
     opacity: 1;
     margin: 40px;
     visibility: visible;
-    transform: translate(0, 0);
+    transform: translate(100%, -200%);
 }
 
 .question__popup__container {
