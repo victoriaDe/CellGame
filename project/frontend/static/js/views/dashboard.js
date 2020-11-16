@@ -19,4 +19,7 @@ export default class extends abstractView {
             '</p></div>';
     }
 
+    init() {
+        super.init();
+    }
 }

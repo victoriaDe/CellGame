@@ -1,5 +1,5 @@
 import abstractView from "./abstractView.js";
-import {Constants} from "./constants.js";
+import {Constants} from "../constants.js";
 
 export default class extends abstractView {
     constructor() {
@@ -30,6 +30,10 @@ export default class extends abstractView {
             '<li>Here we go! Finally, have some good news: if you are on the same square with the bag, you\'ve earned some coins! Congratulations!</li>' +
             '</ul>' +
             '</div>';
+    }
+
+    init() {
+        super.init();
     }
 
 }

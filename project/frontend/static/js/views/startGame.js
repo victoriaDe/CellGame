@@ -1,5 +1,5 @@
 import abstractView from "./abstractView.js";
-import {Constants} from "./constants.js";
+import {Constants} from "../constants.js";
 
 export default class extends abstractView {
     constructor() {
@@ -43,25 +43,15 @@ export default class extends abstractView {
             '        <div id="square25" class="end_point cell"></div>\n' +
             '    </div>\n' +
             '    <div class="icon_player_container" id="iconContainer">\n' +
-            /*'        <div id="player1Div">\n' +
-            '            <p>Lizard</p>\n' +
-            '            <p>Score: <span>0</span></p>\n' +
-            '            <img src="lizard.png" id="lizard" alt=\'lizard\' draggable="false" class="icon firstPlayer">\n' +
-            '        </div>\n' +
-            '        <div id="player2Div">\n' +
-            '            <p>Chicken</p>\n' +
-            '            <p>Score: <span>0</span></p>\n' +
-            '            <img src="chicken.png" id="chicken" alt=\'chicken\' draggable="false" class="icon secondPlayer">\n' +
-            '        </div>\n' +*/
             '        <div class="startBtn" id="startBtn"><p>Start</p></div>\n' +
             '        <div class="dice__wrapper">\n' +
             '            <img src="https://i.ibb.co/gWwgM5v/unknown.png" alt="unknown" id="dice">\n' +
             '            <div class="roll_button" id="rollButton">Roll</div>\n' +
             '            <audio src="https://bit.ly/dice-sound" id="diceAudio"></audio>\n' +
             '        </div>\n' +
-            '        <audio src="coinSound.mp3" id="coinAudion"></audio>\n' +
-            '        <audio src="iceSound.mp3" id="iceAudio"></audio>\n' +
-            '        <audio src="bananaSound.mp3" id="bananaAudio"></audio>\n' +
+            '        <audio src="https://zvukipro.com/uploads/files/2019-07/1563697166_a2d4fd123353974.mp3" id="coinAudion"></audio>\n' +
+            '        <audio src="https://zvukipro.com/uploads/files/2019-10/1571900700_05376.mp3" id="iceAudio"></audio>\n' +
+            '        <audio src="https://zvukipro.com/uploads/files/2020-08/1596511246_ostupilsja.mp3" id="bananaAudio"></audio>\n' +
             '    </div>\n' +
             '\n' +
             '</div>\n' +
@@ -69,7 +59,7 @@ export default class extends abstractView {
             '    <div class="ice__popup__body">\n' +
             '        <div class="ice__popup__content icePopupContentClosed" id="ice__popup__content">\n' +
             '            <h2>OOPsss...It\'s an Ice Cube!</h2>\n' +
-            '            <p>You have to skip next move, thus your opponent should roll twice while waiting for you!</p>\n' +
+            '            <p>You have to skip next move...</p>\n' +
             '            <div><p class="closePopup">ok</p></div>\n' +
             '        </div>\n' +
             '    </div>\n' +
@@ -97,6 +87,8 @@ export default class extends abstractView {
     }
 
     init() {
+        document.getElementById("navbar").style.position = "static";
+
         let players = Constants.players;
 
         let playersContainer = document.getElementById("iconContainer");
@@ -124,11 +116,6 @@ export default class extends abstractView {
             playerDiv.appendChild(scoreP);
             playerDiv.appendChild(playerIcon);
 
-            /*playersContainer.innerHTML += '<div id="' + player.id + '">\n' +
-                '            <p>' + player.name + '</p>\n' +
-                '            <p>Score: <span>0</span></p>\n' +
-                '            <img src="' + player.iconUrl + '" id="' + player.iconId + '" alt=\'icon\' draggable="false" class="icon">\n' +
-                '</div>\n';*/
             player.element = playerIcon;
             player.scoreElement = scoreSpan;
             player.borderElement = nameP;
@@ -160,6 +147,7 @@ export default class extends abstractView {
         let questionInput = document.getElementById('answer_input');
         let questionElement = document.getElementById('question');
         let answerInput = document.getElementById('answer_input');
+        let question, shownAnswers, answers;
 
         //sounds
         let actionsAttributes = {
@@ -445,10 +433,38 @@ export default class extends abstractView {
         }
 
         //QUESTIONS
+        function setRandomQuestion() {
+            let questionNumber = getRandomInt(0, 50);
+            question = Constants.questions[questionNumber].question;
+            let answersString = Constants.questions[questionNumber].answers.toString();
+            if (answersString.includes(",")) {
+                shownAnswers = answersString.substring(0, answersString.indexOf(","));
+            } else {
+                shownAnswers = answersString;
+            }
+            answers = Constants.questions[questionNumber].answers;
+            questionElement.textContent = question;
+        }
 
+        function isCorrect(input) {
+            let result = false;
+            if (typeof answers === "string") {
+                result = isEqualIgnoreCase(input, answers);
+            } else {
+                for (let i = 0; i < answers.length; i++) {
+                    if (isEqualIgnoreCase(input, answers[i])) {
+                        result = true;
+                    }
+                }
+            }
+            return result;
+        }
+
+        function isEqualIgnoreCase(string1, string2) {
+            return string1.trim().toUpperCase() === string2.trim().toUpperCase();
+        }
 
         //COMMON
-
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }

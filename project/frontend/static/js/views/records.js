@@ -1,5 +1,5 @@
 import abstractView from "./abstractView.js";
-import {Constants} from "./constants.js";
+import {Constants} from "../constants.js";
 
 
 export default class extends abstractView {
@@ -15,6 +15,10 @@ export default class extends abstractView {
             '<div class="award_first_place"></div>' +
             `<div class="award_third_place"><p>Бусинка</p><p>${Constants.heart}</p></div>` +
             '</div>';
+    }
+
+    init() {
+        super.init();
     }
 
 }

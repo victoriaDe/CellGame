@@ -12,7 +12,7 @@ export default class {
     }
 
     init() {
-
+        document.getElementById("navbar").style.position = "fixed";
     };
 }
 

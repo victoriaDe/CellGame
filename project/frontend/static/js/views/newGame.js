@@ -1,6 +1,6 @@
 import abstractView from "./abstractView.js";
-import {Constants} from "./constants.js";
-import {Player} from "./player.js";
+import {Constants} from "../constants.js";
+import {Player} from "../player.js";
 
 export default class extends abstractView {
     constructor() {
@@ -43,6 +43,8 @@ export default class extends abstractView {
     }
 
     init() {
+        super.init();
+
         let iconsWrapper = document.getElementById("iconsWrapper");
         for (let i = 0; i < Constants.images.length; i++) {
             iconsWrapper.innerHTML += '<div class="dropdown">\n' +
