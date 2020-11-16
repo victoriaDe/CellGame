@@ -16,6 +16,15 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
+
+        }
+
+        .winPopup__container.closed__WinPopup__container {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .winPopup__container .openWinPopup {
             visibility: visible;
             opacity: 1;
         }
@@ -60,7 +69,7 @@
 
         @keyframes bang {
             to {
-                box-shadow: 33px -54.6666666667px #ff4000, -30px -324.6666666667px #0084ff, -77px -38.6666666667px #00ffa6,
+                box-shadow: 33px -54.6666666667px #ff4000, 30px -324.6666666667px #0084ff, -77px -38.6666666667px #00ffa6,
                 194px -130.6666666667px #ff8400, 249px -77.6666666667px #00ff91, -6px 73.3333333333px #ff6a00,
                 -157px 54.3333333333px #7700ff, -190px -355.6666666667px #e600ff, 228px -52.6666666667px #ff0077,
                 -89px -66.6666666667px #8800ff, 215px -191.6666666667px #7700ff, -125px -393.6666666667px #ff004d,
@@ -113,13 +122,38 @@
             opacity: 0;
         }
 
+        .btnBackToMain {
+            border: 2px solid white;
+            border-radius: 10px;
+            align-self: flex-end;
+            margin-right: 15px;
+            padding: 10px;
+            color: white;
+        }
+
+        .btnBackToMain a {
+            font-weight: bold;
+            font-size: 25px;
+            padding: 15px;
+            font-family: 'Frijole', cursive;
+
+            cursor: pointer;
+        }
+
+        .btnBackToMain:hover {
+            border: 2px solid greenyellow;
+            background: black;
+            color: greenyellow;
+
+        }
+
 
     </style>
 </head>
 <body>
 <div id="siskiIDrakony"><p class="siskiIDrakony">Sis'ki i drakony....</p></div>
 
-<div class="winPopup__container winPopupContainer_close" id="winPopup__container">
+<div class="winPopup__container closed__WinPopup__container" id="winPopup__container">dfghdfh
     <div class="winPopup__body ">
         <div class="fireworks_base">
             <div class="before"></div>
@@ -127,13 +161,32 @@
         </div>
         <div class="winPopup__content" id="winPopup__content">
             <h1>Winner!</h1>
-            <div class="winPopup__userImage" id="winPopup__userImage"><img src="chicken.png" draggable="false"></div>
+            <div class="winPopup__userImage" id="winPopup__userImage"><img src="https://i.ibb.co/j6Kzw49/bear.png"
+                                                                           draggable="false"></div>
         </div>
+        <div class="btnBackToMain"><a data-link id="btnBackToMain">Back to main</a></div>
     </div>
 </div>
+<script>
+    let btn = document.getElementById('siskiIDrakony');
+    let winPopup = document.getElementById('winPopup__container');
+
+    btn.addEventListener('click', winPopupOpen);
 
 
-<script src="test.js"></script>
-<script src="QA.js"></script>
+    function winPopupOpen() {
+        console.log(winPopup);
+
+        winPopup.classList.remove('closed__WinPopup__container');
+        winPopup.classList.add('openWinPopup');
+
+        let btnBackToMain = document.getElementById('btnBackToMain');
+        btnBackToMain.setAttribute('href', '"/"');
+        console.log(btnBackToMain.attributes);
+    }
+
+    //openWinPopup
+
+</script>
 </body>
 </html>

@@ -13,6 +13,8 @@ export default class {
 
     init() {
         document.getElementById("navbar").style.position = "fixed";
+        document.getElementsByTagName('body')[0].style.paddingTop = '150px';
+
     };
 }
 

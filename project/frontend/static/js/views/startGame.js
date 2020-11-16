@@ -1,5 +1,6 @@
 import abstractView from "./abstractView.js";
 import {Constants} from "../constants.js";
+import {ScoreboardPlayer} from "../scoreboardPlayer.js";
 
 export default class extends abstractView {
     constructor() {
@@ -12,7 +13,7 @@ export default class extends abstractView {
             '    <div class="game__container">\n' +
             '        <div id="square6" class="cell question"></div>\n' +
             '        <div id="square5" class="cell money"></div>\n' +
-            '        <div id="square4" class="cell ice"></div>\n' +
+            '        <div id="square4" class="cell money"></div>\n' +
             '        <div id="square3" class="cell money"></div>\n' +
             '        <div id="square2" class="cell banana"></div>\n' +
             '        <div id="square1" class="cell money"></div>\n' +
@@ -37,8 +38,8 @@ export default class extends abstractView {
             '        <div id="square19" class="cell money"></div>\n' +
             '        <div id="square20" class="cell banana"></div>\n' +
             '        <div id="square21" class="cell money"></div>\n' +
-            '        <div id="square22" class="cell question"></div>\n' +
-            '        <div id="square23" class="cell money"></div>\n' +
+            '        <div id="square22" class="cell ice"></div>\n' +
+            '        <div id="square23" class="cell question"></div>\n' +
             '        <div id="square24" class="cell money"></div>\n' +
             '        <div id="square25" class="end_point cell"></div>\n' +
             '    </div>\n' +
@@ -83,11 +84,25 @@ export default class extends abstractView {
             '            <div class="question__result" id="question__result"></div>\n' +
             '        </div>\n' +
             '    </div>\n' +
+            '</div>' +
+            '<div class="winPopup__container closed__WinPopup__container" id="winPopup__container">\n' +
+            '    <div class="winPopup__body ">\n' +
+            '        <div class="fireworks_base">\n' +
+            '            <div class="before"></div>\n' +
+            '            <div class="after"></div>\n' +
+            '        </div>\n' +
+            '        <div class="winPopup__content" id="winPopup__content">\n' +
+            '            <h1>Winner!</h1>\n' +
+            '            <div class="winPopup__userImage" id="winPopup__userImage"></div>\n' +
+            '        </div>' +
+            '        <div class="btnBackToMain"><a data-link id="btnBackToMain">Back to main</a></div>\n' +
+            '    </div>\n' +
             '</div>';
     }
 
     init() {
         document.getElementById("navbar").style.position = "static";
+        document.getElementsByTagName('body')[0].style.paddingTop = '0';
 
         let players = Constants.players;
 
@@ -184,6 +199,7 @@ export default class extends abstractView {
         }
 
         function makeMove(player) {
+
             if (!player.isPlayerFrozen) {
                 highlightUserCell(player);
                 rollButton.addEventListener('click', function waitForRoll() {
@@ -196,6 +212,7 @@ export default class extends abstractView {
                 passMove(player);
                 frozenPopupWait();
             }
+
         }
 
         function continueMoveAfterRoll(player, diceNumber) {
@@ -215,15 +232,31 @@ export default class extends abstractView {
 
         function prepareNextCellToDrop(player, nextCell) {
             nextCell.addEventListener('drop', function waitForDrop() {
-                nextCell.removeEventListener('drop', waitForDrop);
-                nextCell.removeEventListener("dragover", waitForEnter);
-                lowLightNextCell(nextCell);
-                nextCell.appendChild(player.element);
-                player.element.draggable = false;
-                activateCellEvent(player, nextCell);
+                    nextCell.removeEventListener('drop', waitForDrop);
+                    nextCell.removeEventListener("dragover", waitForEnter);
+                    lowLightNextCell(nextCell);
+                    let nexCellNumber = parseInt(nextCell.id.substr(6));
 
-            });
-            nextCell.addEventListener("dragover", waitForEnter);
+                    if (nexCellNumber >= maxCellNumber) {
+                        nextCell.appendChild(player.element);
+                        winPopupOpen(player);
+                    } else {
+                        nextCell.appendChild(player.element);
+                    }
+
+                    player.element.draggable = false;
+                    activateCellEvent(player, nextCell);
+
+                }
+            )
+            ;
+            nextCell
+                .addEventListener(
+                    "dragover"
+                    ,
+                    waitForEnter
+                )
+            ;
         }
 
         function activateCellEvent(player, cell) {
@@ -288,7 +321,7 @@ export default class extends abstractView {
             iceWaitingPopup.classList.remove('closed');
             iceWaitingPopup.classList.add('opened');
 
-            setTimeout(closeIceWaitingPopup, 4000);
+            setTimeout(closeIceWaitingPopup, 2500);
         }
 
         function closeIceWaitingPopup() {
@@ -339,7 +372,7 @@ export default class extends abstractView {
         }
 
         function closeQuestionPopup(player) {
-            setTimeout(() => questionPopupClose(player), 4000);
+            setTimeout(() => questionPopupClose(player), 2500);
         }
 
         function questionPopupClose(player) {
@@ -373,8 +406,34 @@ export default class extends abstractView {
             player.borderElement.style.border = 'none';
         }
 
-        function winPopup() {
+        function winPopupOpen(player) {
+            let scoreboardPlayers = JSON.parse(localStorage.getItem("scoreboardPlayers"));
+            scoreboardPlayers = scoreboardPlayers === null ? [] : scoreboardPlayers;
+            scoreboardPlayers.push(new ScoreboardPlayer(player.name, player.iconUrl, player.scoreElement.textContent));
+            localStorage.setItem("scoreboardPlayers", JSON.stringify(scoreboardPlayers));
 
+            let winPopup = document.getElementById('winPopup__container');
+            let winPopup__userImage = document.getElementById('winPopup__userImage');
+            winPopup.classList.remove('closed__WinPopup__container');
+            winPopup.classList.add('openWinPopup');
+
+            let src = player.element.src;
+
+            let winImg = document.createElement('img');
+            winImg.setAttribute('draggable', 'false');
+            winImg.setAttribute('alt', 'winIcon');
+            winImg.setAttribute('src', src);
+            winImg.style.width = '250px';
+
+            winPopup__userImage.appendChild(winImg);
+            let btnBackToMain = document.getElementById('btnBackToMain');
+            btnBackToMain.addEventListener('click', function () {
+                winPopup__userImage.removeChild(winImg);
+                winPopup.classList.add('closed__WinPopup__container');
+                winPopup.classList.remove('openWinPopup');
+                btnBackToMain.setAttribute('href', '"/"');
+
+            });
         }
 
         function frozenPopup(player) {

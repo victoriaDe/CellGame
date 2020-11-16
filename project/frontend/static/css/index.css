@@ -4,6 +4,7 @@ body {
     color: white;
     padding-top: 150px;
     font-size: 30px;
+    font-family: 'Comfortaa', cursive;
 }
 
 .navbar {
@@ -81,6 +82,15 @@ ul.rule__list li:first-child {
     color: yellow;
 }
 
+ul.rule__list li:last-child {
+    margin-top: 40px;
+}
+
+ul.rule__list li span {
+    font-size: 20px;
+    font-family: 'Frijole', cursive;
+}
+
 .award_stands {
     display: flex;
     justify-content: center;
@@ -93,14 +103,23 @@ ul.rule__list li:first-child {
     border: 1px solid darkgoldenrod;
 }
 
+.award_stands p {
+    text-align: center;
+    margin: 5px;
+}
+
+.award_stands img {
+    width: 100px;
+    padding: 15px;
+    margin: 0 10px;
+}
+
 .award_first_place {
-    background: yellow;
-    height: 280px;
+    height: 290px;
 }
 
 .award_second_place {
-    background: blue;
-    height: 210px;
+    height: 220px;
 }
 
 .award_third_place p {
@@ -108,8 +127,7 @@ ul.rule__list li:first-child {
 }
 
 .award_third_place {
-    background: green;
-    height: 150px;
+    height: 160px;
 }
 
 .game__container {
@@ -129,9 +147,11 @@ ul.rule__list li:first-child {
 }
 
 .icon {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    object-fit: contain;
     z-index: 10;
+    padding: 0;
+
 }
 
 .icon_player_container {
@@ -479,8 +499,13 @@ img {
 .question__popup__content h2 {
     margin-bottom: 1em;
     font-size: 40px;
-    color: white;
-    -webkit-text-stroke: 1px black;
+    color: greenyellow;
+    -webkit-text-stroke: 1px white;
+}
+
+input {
+
+    font-family: 'Balsamiq Sans', cursive;
 }
 
 .question__popup__content input[type=text] {
@@ -548,7 +573,7 @@ img {
 }
 
 .playersChoosingAreaImg {
-    height: 200px;
+    height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -572,7 +597,7 @@ img {
 
 .playersChoosingAreaImg img {
     height: 150px;
-    object-fit: cover;
+    object-fit: contain;
     padding: 5px;
 }
 
@@ -627,11 +652,18 @@ img {
 .player-icon-big {
     width: 200px;
     height: 200px;
+    border: 2px solid greenyellow;
+}
+
+.choosingAreaBtnDiv {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+
 }
 
 .playersChoosingAreaBtn {
-    width: 150px;
-    height: 50px;
+    padding: 10px;
     text-align: center;
     font-weight: bold;
     font-size: 25px;
@@ -657,6 +689,17 @@ img {
     outline: none;
 }
 
+.playersChoosingAreaBtn a {
+    text-decoration: none;
+    padding: 5px;
+    color: darkred;
+}
+
+.playersChoosingAreaBtn a:hover {
+    color: black;
+
+}
+
 .displayNone {
     display: none;
 }
@@ -666,6 +709,15 @@ img {
     padding: 5px;
     font-size: 25px;
     margin: 30px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.addRemoveBtn:hover,
+.addRemoveBtn:focus,
+.addRemoveBtn:active {
+    outline: none;
 }
 
 .game__container {
@@ -680,14 +732,8 @@ img {
 }
 
 .game__container div.empty {
-    background: white;
+    background: black;
     border: none;
-}
-
-.icon {
-    width: 100px;
-    height: 100px;
-    z-index: 10;
 }
 
 .icon_player_container {
@@ -909,7 +955,9 @@ img {
 .iceWaiting__popup__container {
     background: rgb(24, 56, 56);
     display: inline-block;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 200px;
     border: 8px solid #9bf1dc;
     border-radius: 30px;
@@ -921,6 +969,7 @@ img {
 
 .iceWaiting__popup__body {
     min-height: 100%;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1087,4 +1136,152 @@ img {
 
 .question_card_invisible {
     display: none;
+}
+
+.winPopup__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+
+}
+
+.winPopup__container.closed__WinPopup__container {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.winPopup__container .openWinPopup {
+    visibility: visible;
+    opacity: 1;
+}
+
+.winPopup__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px 10px;
+    box-sizing: border-box;
+    text-align: center;
+    min-height: 100%;
+    position: relative;
+}
+
+.winPopup__content h1 {
+    font-size: 50px;
+    color: #efbcef;
+}
+
+.fireworks_base {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+}
+
+.fireworks_base > .before, .fireworks_base > .after {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    box-shadow: 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff;
+    animation: 1s bang ease-out infinite backwards, 1s gravity infinite ease-in backwards, 4s position infinite linear backwards;
+}
+
+.fireworks_base > .after {
+    animation-delay: 1.25s, 1.25s, 1.25s;
+    animation-duration: 2.25s, 2.25s, 2.25s;
+}
+
+@keyframes bang {
+    to {
+        box-shadow: 33px -54.6666666667px #ff4000, 30px -324.6666666667px #0084ff, -77px -38.6666666667px #00ffa6,
+        194px -130.6666666667px #ff8400, 249px -77.6666666667px #00ff91, -6px 73.3333333333px #ff6a00,
+        -157px 54.3333333333px #7700ff, -190px -355.6666666667px #e600ff, 228px -52.6666666667px #ff0077,
+        -89px -66.6666666667px #8800ff, 215px -191.6666666667px #7700ff, -125px -393.6666666667px #ff004d,
+        -133px -201.6666666667px #00ccff, 124px -105.6666666667px #00ff8c, -27px -334.6666666667px #0026ff,
+        -38px 32.3333333333px #0900ff, 190px 17.3333333333px #00ff15, -65px 3.3333333333px #00ffd0,
+        -234px -357.6666666667px #ff00ee, -249px -293.6666666667px #ff3c00, -204px 8.3333333333px #00d9ff,
+        41px -32.6666666667px #00ff95, 38px -350.6666666667px #ffb300, -110px -85.6666666667px #ff005e,
+        95px -86.6666666667px #ee00ff, -219px -269.6666666667px #ffbf00, -142px -306.6666666667px magenta,
+        -8px 14.3333333333px #ffea00, -38px 77.3333333333px #00ff99, -4px 57.3333333333px #d0ff00, 143px -38.6666666667px #ff6600,
+        -121px -198.6666666667px #4400ff, -110px -230.6666666667px #04ff00, 32px 3.3333333333px #ff0015, -66px -396.6666666667px #91ff00,
+        -72px 11.3333333333px #ff00d5, -52px 16.3333333333px #ff0004, -54px -142.6666666667px #3c00ff, -63px 50.3333333333px #00ff55,
+        68px 2.3333333333px #ff4800, 27px -191.6666666667px #ff00e6, 144px -325.6666666667px #008cff, -140px -160.6666666667px #0055ff,
+        -214px -72.6666666667px #00d0ff, 240px -414.6666666667px #00eeff, -207px -165.6666666667px #0062ff, 27px -357.6666666667px #bfff00,
+        151px 65.3333333333px #44ff00, 158px -30.6666666667px #5100ff, -187px -120.6666666667px #aeff00, -248px -226.6666666667px #3300ff;
+    }
+}
+
+@keyframes gravity {
+    to {
+        transform: translateY(200px);
+        opacity: 0;
+    }
+}
+
+@keyframes position {
+    0%, 19.9% {
+        margin-top: 10%;
+        margin-left: 40%;
+    }
+    20%, 39.9% {
+        margin-top: 40%;
+        margin-left: 30%;
+    }
+    40%, 59.9% {
+        margin-top: 20%;
+        margin-left: 70%;
+    }
+    60%, 79.9% {
+        margin-top: 30%;
+        margin-left: 20%;
+    }
+    80%, 99.9% {
+        margin-top: 30%;
+        margin-left: 80%;
+    }
+}
+
+.winPopup__container.winPopupContainer_close {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.btnBackToMain {
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-right: 15px;
+    font-family: 'Frijole', cursive;
+}
+
+.btnBackToMain:hover {
+    border: 2px solid greenyellow;
+    background: black;
+    color: greenyellow;
+
+}
+
+.award__list {
+    font-size: 20px;
+    list-style-type: decimal;
+    margin-top: 15px;
+}
+
+.award__list li {
+    color: white;
+}
+
+.award__list li p {
+    display: flex;
+    justify-content: space-between;
 }

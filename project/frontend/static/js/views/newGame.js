@@ -38,7 +38,7 @@ export default class extends abstractView {
             '<button class="removePlayerButton addRemoveBtn" id="removePlayerButton">-</button>\n' +
             '</div>\n' +
             '<div>\n' +
-            '    <button class="playersChoosingAreaBtn" id="playersChoosingAreaBtn"><a id="playersChoosingAreaLink" href="/startGame">Ready!</a></button>\n' +
+            '    <div class="choosingAreaBtnDiv"><button class="playersChoosingAreaBtn" id="playersChoosingAreaBtn">Not ready!</button></div>\n' +
             '</div>';
     }
 
